@@ -7,7 +7,7 @@ TRY_LOOP="20"
 : ${REDIS_HOST:="redis"}
 : ${REDIS_PORT:="6379"}
 
-: ${POSTGRES_HOST:="postgres"}
+: ${POSTGRES_HOST:="postgresql"}
 : ${POSTGRES_PORT:="5432"}
 : ${POSTGRES_USER:="airflow"}
 : ${POSTGRES_PASSWORD:="airflow"}
