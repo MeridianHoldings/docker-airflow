@@ -4,14 +4,14 @@ services:
         image: 'redis:3.2.7'
 
     postgres:
-        image: postgres:9.6
+        image: centos/postgresql-94-centos7
         environment:
-            - POSTGRES_USER=airflow
-            - POSTGRES_PASSWORD=airflow
-            - POSTGRES_DB=airflow
+            - POSTGRESQL_USER=airflow
+            - POSTGRESQL_PASSWORD=airflow
+            - POSTGRESQL_DATABASE=airflow
 
     webserver:
-        image: puckel/docker-airflow:1.8.1
+        image: groupmeridian/docker-airflow
         restart: always
         depends_on:
             - postgres
@@ -30,7 +30,7 @@ services:
         command: webserver
 
     flower:
-        image: puckel/docker-airflow:1.8.1
+        image: groupmeridian/docker-airflow
         restart: always
         depends_on:
             - redis
@@ -41,7 +41,7 @@ services:
         command: flower
 
     scheduler:
-        image: puckel/docker-airflow:1.8.1
+        image: groupmeridian/docker-airflow
         restart: always
         depends_on:
             - webserver
@@ -57,7 +57,7 @@ services:
         command: scheduler
 
     worker:
-        image: puckel/docker-airflow:1.8.1
+        image: groupmeridian/docker-airflow
         restart: always
         depends_on:
             - scheduler
