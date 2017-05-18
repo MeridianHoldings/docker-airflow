@@ -3,7 +3,7 @@ services:
     redis:
         image: 'redis:3.2.7'
 
-    postgres:
+    postgresql:
         image: centos/postgresql-94-centos7
         environment:
             - POSTGRESQL_USER=airflow
@@ -14,7 +14,7 @@ services:
         image: groupmeridian/docker-airflow
         restart: always
         depends_on:
-            - postgres
+            - postgresql
             - redis
         environment:
             - LOAD_EX=y
